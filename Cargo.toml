@@ -1,23 +1,23 @@
 [package]
 name = "xforth"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 authors = ["CryptoPatrick <cryptopatrick@gmail.com>"]
 
 ###############################################################################
-description = ""Utils for working with x402.""
+description = "CLI tool for bootstrapping x402 Solana projects in under 90 seconds"
 documentation = "https://docs.rs/xforth"
 homepage = "https://github.com/cryptopatrick/xforth"
 repository = "https://github.com/cryptopatrick/xforth"
 readme = "README.md"
-keywords = ["<KEYWORD1>", "<KEYWORD2>" ]
+keywords = ["solana", "x402", "cli", "blockchain", "devnet"]
 license = "MIT"
 autotests = false
 
 ###############################################################################
-[lib]
+[[bin]]
 name = "xforth"
-path = "src/lib.rs"
+path = "src/main.rs"
 
 [[test]]
 name = "tests"
@@ -25,3 +25,15 @@ path = "tests/test.rs"
 
 ###############################################################################
 [dependencies]
+clap = { version = "4.5.4", features = ["derive"] }
+solana-sdk = "1.18.0"
+solana-client = "1.18.0"
+spl-token = { version = "4.0.0", features = ["no-entrypoint"] }
+spl-token-2022 = { version = "1.0.0", features = ["no-entrypoint"] }
+tokio = { version = "1.37.0", features = ["full"] }
+serde = { version = "1.0.200", features = ["derive"] }
+serde_json = "1.0.116"
+anyhow = "1.0.82"
+dotenvy = "0.15.7"
+bs58 = "0.5.1"
+colored = "2.1.0"
