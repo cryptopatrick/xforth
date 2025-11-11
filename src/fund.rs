@@ -3,15 +3,13 @@ use solana_sdk::{
     pubkey::Pubkey,
     signature::{Keypair, Signer},
     native_token::LAMPORTS_PER_SOL,
-    commitment_config::CommitmentConfig,
-    system_instruction,
     transaction::Transaction,
     program_pack::Pack,
 };
-use spl_token_2022::{
-    instruction as token_instruction,
-    state::Mint,
-};
+use solana_system_interface::instruction as system_instruction;
+use solana_commitment_config::CommitmentConfig;
+use spl_token_2022::state::Mint;
+use spl_token_2022::instruction as token_instruction;
 use std::time::Duration;
 use tokio::time::sleep;
 use anyhow::{Result, Context};

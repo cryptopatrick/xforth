@@ -18,8 +18,16 @@ pub fn keypair_to_json(keypair: &Keypair) -> String {
 pub fn keypair_from_json(json_str: &str) -> Result<Keypair> {
     let bytes: Vec<u8> = serde_json::from_str(json_str)
         .context("Failed to parse keypair JSON")?;
-    Keypair::from_bytes(&bytes)
-        .map_err(|e| anyhow::anyhow!("Invalid keypair bytes: {}", e))
+
+    // Solana SDK 3.0: keypair is 64 bytes (secret key 32 + public key 32)
+    // Use new_from_array which takes only the secret key (first 32 bytes)
+    if bytes.len() != 64 {
+        return Err(anyhow::anyhow!("Invalid keypair bytes length: expected 64, got {}", bytes.len()));
+    }
+
+    let mut secret_key = [0u8; 32];
+    secret_key.copy_from_slice(&bytes[..32]);
+    Ok(Keypair::new_from_array(secret_key))
 }
 
 /// Load keypair from environment variable

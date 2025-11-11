@@ -2,13 +2,22 @@ use solana_client::rpc_client::RpcClient;
 use solana_sdk::{
     signature::Signer,
     transaction::Transaction,
-    system_instruction,
-    native_token::{sol_to_lamports, lamports_to_sol},
-    commitment_config::CommitmentConfig,
+    native_token::LAMPORTS_PER_SOL,
 };
+use solana_system_interface::instruction as system_instruction;
+use solana_commitment_config::CommitmentConfig;
 use anyhow::{Result, Context};
 use serde_json::json;
 use crate::utils::{log_action, log_info, load_keypair_from_env, log_balance, output_json};
+
+// Helper functions for SOL <-> lamports conversion
+fn lamports_to_sol(lamports: u64) -> f64 {
+    lamports as f64 / LAMPORTS_PER_SOL as f64
+}
+
+fn sol_to_lamports(sol: f64) -> u64 {
+    (sol * LAMPORTS_PER_SOL as f64) as u64
+}
 
 pub async fn run(rpc_url: &str, json_output: bool) -> Result<()> {
     // Load .env from current directory
