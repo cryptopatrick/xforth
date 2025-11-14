@@ -46,6 +46,7 @@ pub fn log_info(msg: &str) {
     println!("{} \"{}\"", "Log:".yellow(), msg);
 }
 
+#[allow(dead_code)]
 pub fn log_error(msg: &str) {
     eprintln!("{} {}", "Error:".red().bold(), msg);
 }

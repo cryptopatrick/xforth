@@ -13,7 +13,6 @@ fn main() {
 }
 
 #[cfg(feature = "gui")]
-
 #[derive(Clone, PartialEq)]
 struct AppState {
     project_name: String,
@@ -23,6 +22,7 @@ struct AppState {
     is_running: bool,
 }
 
+#[cfg(feature = "gui")]
 impl Default for AppState {
     fn default() -> Self {
         Self {
@@ -35,10 +35,12 @@ impl Default for AppState {
     }
 }
 
+#[cfg(feature = "gui")]
 fn main() {
     dioxus::launch(App);
 }
 
+#[cfg(feature = "gui")]
 #[component]
 fn App() -> Element {
     let state = use_signal(AppState::default);
@@ -65,6 +67,7 @@ fn App() -> Element {
     }
 }
 
+#[cfg(feature = "gui")]
 #[component]
 fn ConfigPanel(state: Signal<AppState>) -> Element {
     rsx! {
@@ -126,6 +129,7 @@ fn ConfigPanel(state: Signal<AppState>) -> Element {
     }
 }
 
+#[cfg(feature = "gui")]
 #[component]
 fn CommandPanel(mut state: Signal<AppState>) -> Element {
     let run_init = move |_| {
@@ -227,6 +231,7 @@ fn CommandPanel(mut state: Signal<AppState>) -> Element {
     }
 }
 
+#[cfg(feature = "gui")]
 #[component]
 fn OutputPanel(state: Signal<AppState>) -> Element {
     rsx! {

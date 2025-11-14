@@ -1,2 +1,1 @@
-extern crate xforth;
-use xforth::*;
+// Tests will be added here

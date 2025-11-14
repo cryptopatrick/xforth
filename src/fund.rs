@@ -8,8 +8,9 @@ use solana_sdk::{
 };
 use solana_system_interface::instruction as system_instruction;
 use solana_commitment_config::CommitmentConfig;
-use spl_token_2022::state::Mint;
-use spl_token_2022::instruction as token_instruction;
+use spl_token::state::Mint;
+#[allow(deprecated)]
+use spl_token::instruction as token_instruction;
 use std::time::Duration;
 use tokio::time::sleep;
 use anyhow::{Result, Context};
@@ -132,11 +133,11 @@ async fn mint_test_tokens(
         &mint_pubkey,
         mint_rent,
         Mint::LEN as u64,
-        &spl_token_2022::id(),
+        &spl_token::id(),
     );
 
     let init_mint_ix = token_instruction::initialize_mint(
-        &spl_token_2022::id(),
+        &spl_token::id(),
         &mint_pubkey,
         &payer.pubkey(),
         None,
