@@ -1,14 +1,9 @@
 #[cfg(feature = "gui")]
 use dioxus::prelude::*;
 
+// Use the library modules instead of redeclaring them
 #[cfg(feature = "gui")]
-mod init;
-#[cfg(feature = "gui")]
-mod fund;
-#[cfg(feature = "gui")]
-mod test;
-#[cfg(feature = "gui")]
-mod utils;
+use xforth::{init, fund, test};
 
 #[cfg(not(feature = "gui"))]
 fn main() {
@@ -46,14 +41,14 @@ fn main() {
 
 #[component]
 fn App() -> Element {
-    let mut state = use_signal(AppState::default);
+    let state = use_signal(AppState::default);
 
     rsx! {
         style { {include_str!("../assets/style.css")} }
         div {
             class: "container",
-            h1 { class: "title", "xforth GUI" }
-            p { class: "subtitle", "Bootstrap x402 Solana projects with a graphical interface" }
+            h1 { class: "title", "xForth" }
+            p { class: "subtitle", "Bootstrap x402 Solana Projects" }
 
             ConfigPanel {
                 state: state,
@@ -75,7 +70,7 @@ fn ConfigPanel(state: Signal<AppState>) -> Element {
     rsx! {
         div {
             class: "panel config-panel",
-            h2 { "Configuration" }
+            h2 { "CONFIGURATION" }
 
             div {
                 class: "form-group",
@@ -134,7 +129,7 @@ fn ConfigPanel(state: Signal<AppState>) -> Element {
 #[component]
 fn CommandPanel(mut state: Signal<AppState>) -> Element {
     let run_init = move |_| {
-        let state = state.clone();
+        let mut state = state.clone();
         spawn(async move {
             state.write().is_running = true;
             state.write().output_logs.clear();
@@ -157,7 +152,7 @@ fn CommandPanel(mut state: Signal<AppState>) -> Element {
     };
 
     let run_fund = move |_| {
-        let state = state.clone();
+        let mut state = state.clone();
         spawn(async move {
             state.write().is_running = true;
             state.write().output_logs.clear();
@@ -179,7 +174,7 @@ fn CommandPanel(mut state: Signal<AppState>) -> Element {
     };
 
     let run_test = move |_| {
-        let state = state.clone();
+        let mut state = state.clone();
         spawn(async move {
             state.write().is_running = true;
             state.write().output_logs.clear();
@@ -203,7 +198,7 @@ fn CommandPanel(mut state: Signal<AppState>) -> Element {
     rsx! {
         div {
             class: "panel command-panel",
-            h2 { "Commands" }
+            h2 { "COMMAND" }
 
             div {
                 class: "button-group",
@@ -237,7 +232,7 @@ fn OutputPanel(state: Signal<AppState>) -> Element {
     rsx! {
         div {
             class: "panel output-panel",
-            h2 { "Output" }
+            h2 { "OUTPUT" }
 
             div {
                 class: "output-box",

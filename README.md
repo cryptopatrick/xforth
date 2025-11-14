@@ -7,7 +7,7 @@
 <h4 align="center">
   CLI tool for bootstrapping
   <a href="https://github.com/cryptopatrick/x402" target="_blank">
-    x402 Solana projects</a> in under 90 seconds</h4>
+    x402 Solana projects</a></h4>
 
 <p align="center">
   <a href="https://crates.io/crates/xforth" target="_blank">
@@ -69,7 +69,7 @@ If you have any questions or need more info, then please <a href="https://discor
 
 ## What is xforth
 
-`xforth` is a Rust-based CLI tool that automates the complete setup process for x402 projects on the Solana blockchain. It eliminates the tedious manual setup that traditionally takes hours, reducing it to under 90 seconds through intelligent automation of keypair generation, wallet funding, token minting, and payment flow validation.
+`xforth` is a Rust-based CLI tool that automates the complete setup process for x402 projects on the Solana blockchain. Through intelligent automation of keypair generation, wallet funding, token minting, and payment flow validation - the whole process is much smoother.
 
 ### Use Cases
 
@@ -322,7 +322,13 @@ Keybase Verification:
 https://keybase.io/cryptopatrick/sigs/8epNh5h2FtIX1UNNmf8YQ-k33M8J-Md4LnAN
 
 ## Support
-Leave a if you think this project is cool.
+I'm just a lone dev, silently hacking away, in a place far far away.
+Please don't hesitate to tweet at me <a>https://x.com/cryptopatrick/</a> 
+if you found this project helpful in any way.
+You can also support me with Solana: 8uCGFmXRQPJQ8r16d9a1DroRcmmtzus3SFfTkteSt2Xj
+or Ethereum: 0x52a361c89ebF05C8ea3fA72fc43aDF30f53e2D21
+
+Cheers!
 
 ## Contributing
 
