@@ -5,7 +5,7 @@ edition = "2021"
 authors = ["CryptoPatrick <cryptopatrick@gmail.com>"]
 
 ###############################################################################
-description = "CLI tool for bootstrapping x402 Solana projects in under 90 seconds"
+description = "CLI tool for bootstrapping x402 Solana projects."
 documentation = "https://docs.rs/xforth"
 homepage = "https://github.com/cryptopatrick/xforth"
 repository = "https://github.com/cryptopatrick/xforth"
